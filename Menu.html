@@ -10,16 +10,17 @@
     />
 
     <style>
+      html,
       body {
+        height: 100%;
+        margin: 0;
         background: #000;
         font-family: Helvetica, Arial, sans-serif;
-        margin: 0;
-        padding: 0;
       }
 
       .swiper {
         width: 100%;
-        height: auto;
+        height: 100vh; /* luôn chiếm toàn màn hình */
         background: #000;
         display: flex;
         justify-content: center;
@@ -35,7 +36,7 @@
 
       .swiper-slide img {
         max-width: 100%;
-        max-height: 100vh; /* 👈 không vượt quá chiều cao trình duyệt */
+        max-height: 100%;
         width: auto;
         height: auto;
         object-fit: contain;
@@ -43,6 +44,34 @@
 
       .swiper-pagination {
         bottom: 10px !important;
+      }
+
+      /* 👇 Số trang cố định góc trái */
+      .page-counter {
+        position: fixed;
+        bottom: 10px;
+        left: 15px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 5px 10px;
+        border-radius: 6px;
+        z-index: 9999;
+        pointer-events: none; /* không ảnh hưởng thao tác */
+      }
+
+      /* 👇 Tối ưu thêm cho mobile */
+      @media (max-width: 768px) {
+        .swiper-slide img {
+          max-height: 90vh; /* tránh tràn màn hình nhỏ */
+        }
+        .page-counter {
+          font-size: 14px;
+          padding: 3px 8px;
+          bottom: 8px;
+          left: 10px;
+        }
       }
     </style>
   </head>
@@ -78,11 +107,20 @@
       <div class="swiper-pagination"></div>
     </div>
 
+    <div class="page-counter" id="pageCounter">1/8</div>
+
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
       var swiper = new Swiper(".mySwiper", {
         pagination: {
           el: ".swiper-pagination",
+        },
+        on: {
+          slideChange: function () {
+            const current = this.realIndex + 1;
+            const total = this.slides.length;
+            document.getElementById("pageCounter").textContent = `${current}/${total}`;
+          },
         },
       });
     </script>
