@@ -8,11 +8,9 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
-
     <style>
       body {
         background: #000;
-        font-family: Helvetica, Arial, sans-serif;
         margin: 0;
         padding: 0;
       }
@@ -35,10 +33,11 @@
 
       .swiper-slide img {
         max-width: 100%;
-        max-height: 100vh; /* 👈 không vượt quá chiều cao trình duyệt */
+        max-height: 100vh; 
         width: auto;
         height: auto;
         object-fit: contain;
+        cursor: pointer;
       }
 
       .swiper-pagination {
@@ -50,40 +49,37 @@
   <body>
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/1.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/2.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/3.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/4.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/5.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/6.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/7.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/8.png" />
-        </div>
+        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/1.png"></div>
+        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/2.png"></div>
+        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/3.png"></div>
+        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/4.png"></div>
+        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/5.png"></div>
+        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/6.png"></div>
+        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/7.png"></div>
+        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/8.png"></div>
       </div>
       <div class="swiper-pagination"></div>
     </div>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
     <script>
-      var swiper = new Swiper(".mySwiper", {
+      const swiper = new Swiper(".mySwiper", {
         pagination: {
           el: ".swiper-pagination",
         },
+      });
+      const swiperContainer = document.querySelector(".mySwiper");
+
+      swiperContainer.addEventListener("click", function (e) {
+        const x = e.clientX;
+        const width = swiperContainer.clientWidth;
+
+        if (x < width / 2) {
+          swiper.slidePrev(); 
+        } else {
+          swiper.slideNext(); 
+        }
       });
     </script>
   </body>
