@@ -3,11 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Asia Imbiss Wok Menu</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
-    />
-    <!-- Link Swiper's CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
@@ -16,28 +12,32 @@
     <style>
       body {
         background: #eee;
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-family: Helvetica, Arial, sans-serif;
         margin: 0;
         padding: 0;
       }
 
       .swiper {
         width: 100%;
-        height: auto;
+        height: 100vh; /* hoặc 600px nếu muốn khung thấp hơn */
+        background: #000;
       }
 
       .swiper-slide {
-        text-align: center;
-        background: #fff;
         display: flex;
         justify-content: center;
         align-items: center;
+        background: #000;
       }
 
       .swiper-slide img {
         width: 100%;
-        height: auto; /* giữ nguyên tỷ lệ và chiều cao thật */
-        object-fit: contain;
+        height: 100%;
+        object-fit: contain; /* hình luôn nằm gọn trong khung */
+      }
+
+      .swiper-pagination {
+        bottom: 10px !important;
       }
     </style>
   </head>
@@ -45,28 +45,40 @@
   <body>
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/1.png"></div>
-        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/2.png"></div>
-        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/3.png"></div>
-        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/4.png"></div>
-        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/5.png"></div>
-        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/6.png"></div>
-        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/7.png"></div>
-        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/8.png"></div>
+        <div class="swiper-slide">
+          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/1.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/2.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/3.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/4.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/5.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/6.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/7.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="https://raw.githubusercontent.com/AsiaImbissWok/AMenu/gh-pages/8.png" />
+        </div>
       </div>
       <div class="swiper-pagination"></div>
     </div>
 
-    <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
     <script>
       var swiper = new Swiper(".mySwiper", {
         pagination: {
           el: ".swiper-pagination",
         },
-        autoHeight: true, // <-- tự co chiều cao theo hình
       });
     </script>
   </body>
